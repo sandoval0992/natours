@@ -2,15 +2,11 @@
 import axios from "axios";
 import { showAlert } from "./alerts";
 
-// dotenv.config({ path: "../config.env" });
-
 export const login = async (email, password) => {
   try {
-    // console.log("Port, login..");
-    // console.log(process.env.PORT);
     const response = await axios({
       method: "POST",
-      url: "http://localhost:8001/api/v1/users/login",
+      url: "/api/v1/users/login",
       data: {
         email,
         password
@@ -33,7 +29,7 @@ export const logout = async () => {
   try {
     const response = await axios({
       method: "GET",
-      url: "http://localhost:8001/api/v1/users/logout"
+      url: "/api/v1/users/logout"
     });
 
     if (response.data.status === "success")

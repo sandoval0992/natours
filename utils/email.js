@@ -12,10 +12,6 @@ module.exports = class Email {
 
   newTransport() {
     if (process.env.NODE_ENV === "production") {
-      console.log("Sending sign up email in production mode ");
-      console.log(process.env.SENDGRID_USERNAME);
-      console.log(process.env.SENDGRID_PASSWORD);
-
       return nodemailer.createTransport({
         service: "SendGrid",
         auth: {
@@ -52,8 +48,6 @@ module.exports = class Email {
       html,
       text: htmlToText.fromString(html)
     };
-
-    console.log(mailOptions);
 
     // 3) Create a transport and send email
 

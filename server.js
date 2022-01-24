@@ -22,10 +22,10 @@ mongoose
   })
   .then(dbConnection => {
     console.log("App successfully connected to database");
+  })
+  .catch(error => {
+    console.log(`Connection error: ${error}`);
   });
-// .catch(error => {
-//   console.log(`Connection error: ${error}`);
-// });
 
 const port = process.env.PORT || 3000;
 
@@ -39,6 +39,3 @@ process.on("unhandledRejection", err => {
     process.exit(1);
   });
 });
-
-// console.log(x);
-//ToDo

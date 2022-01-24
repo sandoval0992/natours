@@ -11,7 +11,6 @@ const handleCastErrorDB = err => {
 };
 
 const handleDuplicateFieldsDB = err => {
-  // console.log(err.keyValue.name);
   // const value = err.errmsg.match(/(["'])(\\?.)*?\1/)[0];
   const value = err.keyValue.name;
   const message = `Duplicate field found: ${value}`;
@@ -28,8 +27,7 @@ const handleValidationErrorDB = err => {
 };
 
 const sendErrorDev = (err, req, res) => {
-  console.log(`Dev Error Controller: ${err}`);
-  console.log(err);
+  console.log(`Dev Error: ${err}`);
 
   if (req.originalUrl.startsWith("/api")) {
     return res.status(err.statusCode).json({
@@ -47,8 +45,7 @@ const sendErrorDev = (err, req, res) => {
 };
 
 const sendErrorProd = (err, req, res) => {
-  console.log(`Prod Error Controller:`);
-  console.log(err);
+  console.log(`Prod Error: ${err}`);
   //Back-end error handler
   if (req.originalUrl.startsWith("/api")) {
     //known error
@@ -83,7 +80,6 @@ const sendErrorProd = (err, req, res) => {
 };
 
 module.exports = (err, req, res, next) => {
-  //   console.log(err.stack);
   err.statusCode = err.statusCode || 500;
   err.status = err.status || "error";
 

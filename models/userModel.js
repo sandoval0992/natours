@@ -78,7 +78,6 @@ userSchema.methods.validatePassword = async function(
   loginPassword,
   dbPassword
 ) {
-  console.log(loginPassword, dbPassword);
   return await bcrypt.compare(loginPassword, dbPassword);
 };
 

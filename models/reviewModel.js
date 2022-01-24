@@ -67,7 +67,6 @@ reviewSchema.statics.calculateAverageRaitings = async function(tourId) {
       }
     }
   ]);
-  console.log(stats);
 
   let ratingsQuantity = 0;
   let ratingsAverage = 4.5;
@@ -81,11 +80,6 @@ reviewSchema.statics.calculateAverageRaitings = async function(tourId) {
 
   await Tour.findByIdAndUpdate(tourId, { ratingsQuantity, ratingsAverage });
 };
-
-// reviewSchema.pre("save", function() {
-//   console.log("Before creating review...");
-//   console.log(this);
-// });
 
 reviewSchema.index({ tour: 1, user: 1 }, { unique: true });
 
